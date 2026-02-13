@@ -5,20 +5,24 @@ public class CustomDate {
 	private int day;
 	private int year;
 	private boolean isLeap;
+	private boolean checkLeap(int year) {
+		if(year<0) {
+			System.err.println("Please enter a posivite year");
+			return false;
+		} else {
+			if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0) {
+			    return true;
+			} else {
+			    return false;
+			}
+		}
+	}
+	
 	CustomDate(){
 		
 	}
 	CustomDate(int month, int day, int year){
-		if(year<0) {
-			System.err.println("Please enter a posivite year");
-			return;
-		} else {
-			if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0) {
-			    isLeap = true;
-			} else {
-			    isLeap = false;
-			}
-		}
+		isLeap = checkLeap(year);
 		if (month<1 || month > 12) {
 			System.err.println("Please enter a valid month");
 			return;
@@ -104,4 +108,5 @@ public class CustomDate {
 		}
 		
 	}
+	
 }
